@@ -1,3 +1,72 @@
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports) {
+
 // CLASSES PROJECT
 // In this project, you will build a Mazda car factory that manufactures both cars and trucks.
 // Read each set of instructions carefully!
@@ -24,10 +93,10 @@ class Factory {
     this.abs = abs
     this.warranty = warranty
     this.massBuild = function(quantity, car) {
-      console.log(`Building ${quantity} ${car.color} ${car.trim} ${car.model}'s`);
+      console.log(`Building ${quantity} ${car.color} ${car.trim} ${car.model}`);
     }
     this.customerBuild = function(color ,car, options) {
-      console.log(`Building one ${color} ${car.trim} ${car.model} with the following options: ${options}`);
+      console.log(`Building one ${color} ${car.trim} ${car.model} with the following options ${options}`);
     }
   }
 }
@@ -71,8 +140,7 @@ class Car extends Factory {
 // Write your code below:
 
 class Sport extends Car{
-  constructor(model, trim, transmission, top, color, seatstrim, audio, wheelstrim, warranty, moonroof = false, enginetype = 'gasoline', convertible = true, doors = 2){
-    super(warranty)
+  constructor(model, trim, transmission, top, color, seatstrim, audio, wheelstrim, moonroof = false, enginetype = 'gasoline', convertible = true, doors = 2){
     this.model = model
     this.trim = trim
     this.transmission = transmission
@@ -81,7 +149,6 @@ class Sport extends Car{
     this.seatstrim = seatstrim
     this.audio = audio
     this.wheelstrim = wheelstrim
-    this.warranty = '150,000 miles / 6 years'
     this.moonroof = moonroof
     this.enginetype = enginetype
     this.convertible = convertible
@@ -100,22 +167,6 @@ class Sport extends Car{
 // It should also inherit the warranty property so we can extend it to: 150,000 miles / 6 years.
 // Write your code below:
 
-class Truck extends Factory{
-  constructor(model, color, trim, enginesize, hitch, bed, navigation, doors, backupcamera = true, audio = true, warranty) {
-    super(warranty)
-    this.model = model
-    this.color = color
-    this.trim = trim
-    this.enginesize = enginesize
-    this.hitch = hitch
-    this.bed = bed
-    this.navigation = navigation
-    this.doors = doors
-    this.backupcamera = backupcamera
-    this.audio = audio
-    this.warranty = '150,000 miles / 6 years'
-  }
-}
 
 
 
@@ -151,7 +202,7 @@ console.log(mazda3.massBuild(35000, mazda3));
 // It should read: "Building one yellow Touring Mazda3 with the following options: weather package, satellite radio, rear spoiler"
 // Write your code below:
 
-console.log(mazda3.customerBuild('yellow', mazda3, ['weather package', ' satellite radio', ' rear spoiler']));
+console.log(mazda3.customerBuild('yellow', mazda3, ['weather package', 'satellite radio', 'rear spoiler']));
 
 
 
@@ -164,15 +215,12 @@ console.log(mazda3.customerBuild('yellow', mazda3, ['weather package', ' satelli
 // Write your 'miataRf' instance below:
 // Write your code below:
 
-let miataRf = new Sport('Miata-RF', 'Grand Touring', 'Manual', 'Hard top', 'Red', 'Leather', 'Premium', 'Premium')
 
 
 
 
 // Print miataRf. It should have all of the above properties. Plus, the extended warranty.
 // Write your code below:
-console.log(miataRf);
-
 
 
 
@@ -182,8 +230,6 @@ console.log(miataRf);
 // It should print: "Building 15000 Red Grand Touring Miata-RF's."
 // Write your code below:
 
-console.log(miataRf.massBuild(15000, miataRf));
-
 
 
 
@@ -191,8 +237,6 @@ console.log(miataRf.massBuild(15000, miataRf));
 // Print miataRf, calling customerBuild(), building one black Miata-Rf with the following options, as an array: hid headlights, sports suspension, leather steering wheel, heated seats, adaptive cruise control.
 // It should read: "Building one black Grand Touring Miata-RF with the following options: hid headlights, sports suspension, leather steering wheel, heated seats, adaptive cruise control"
 // Write your code below:
-
-console.log(miataRf.customerBuild('black', miataRf, ['hid headlights', ' sports suspension', ' leather steering wheel', ' heated seats', ' adaptive cruise control']));
 
 
 
@@ -204,8 +248,6 @@ console.log(miataRf.customerBuild('black', miataRf, ['hid headlights', ' sports 
 // Write your 'trailBlazer' instance below:
 // Write your code below:
 
-let trailBlazer = new Truck ('Trail Blazer', 'Blue', 'Sport', 8, true, 'Standard', true, 2, true, 'Basic')
-
 
 
 
@@ -213,14 +255,12 @@ let trailBlazer = new Truck ('Trail Blazer', 'Blue', 'Sport', 8, true, 'Standard
 // Print trailBlazer. It should have all the above properties. Plus, the extended warranty.
 // Write your code below:
 
-console.log(trailBlazer);
+
 
 
 // Print trailBlazer, calling massBuid(). It should build 35000 trucks.
 // It should print: "Building 35000 blue Sport Trail Blazer's."
 // Wrint your code below:
-
-console.log(trailBlazer.massBuild(35000, trailBlazer));
 
 
 
@@ -230,4 +270,6 @@ console.log(trailBlazer.massBuild(35000, trailBlazer));
 // It should print: "Building one red Sport Trail Blazer with the following options: seat warmers, tinted windows, fog lamps"
 // Write your code below:
 
-console.log(trailBlazer.customerBuild('red', trailBlazer, ['seat warmers', ' tinted windows', ' fog lamps']));
+
+/***/ })
+/******/ ]);
